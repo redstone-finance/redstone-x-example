@@ -20,7 +20,7 @@ contract NoSlippageDex is MainDemoConsumerBase {
   // TODO: add mapping from tokens to bytes32
   // TODO: override function for timestamp validation (it will validate the block number instead)
 
-  // TODO: remove
+  // TODO: remove later
   /**
    * Returns the latest price of STX stocks
    */
