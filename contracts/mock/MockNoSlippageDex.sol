@@ -7,17 +7,19 @@ import "@redstone-finance/evm-connector/contracts/mocks/AuthorisedMockSignersBas
 import "../NoSlippageDex.sol";
 
 contract MockNoSlippageDex is NoSlippageDex, AuthorisedMockSignersBase {
-  function getUniqueSignersThreshold() public view virtual override returns (uint8) {
-    return 2;
-  }
-
-  function getAuthorisedSignerIndex(address signerAddress)
+  function getUniqueSignersThreshold()
     public
     view
     virtual
     override
     returns (uint8)
   {
+    return 2;
+  }
+
+  function getAuthorisedSignerIndex(
+    address signerAddress
+  ) public view virtual override returns (uint8) {
     return getAuthorisedMockSignerIndex(signerAddress);
   }
 }

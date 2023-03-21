@@ -7,13 +7,14 @@ chai.use(chaiAsPromised);
 
 describe("NoSlippageDex", () => {
   it("Should deploy and test", async () => {
+    // Deploy contract
     const NoSlippageDexFactory = await ethers.getContractFactory(
       "MockNoSlippageDex"
     );
     const contract = await NoSlippageDexFactory.deploy();
-
     await contract.deployed();
 
+    // Wrap contract
     const wrappedContract = WrapperBuilder.wrap(
       contract
     ).usingSimpleNumericMock({
@@ -22,8 +23,10 @@ describe("NoSlippageDex", () => {
       timestampMilliseconds: Date.now(),
     });
 
+    // Get oracle value
     const stxPrice = await wrappedContract.getLatestStxPrice();
 
+    // Validate oracle value
     expect(stxPrice.toNumber()).to.eq(42 * 10 ** 8);
   });
 });
