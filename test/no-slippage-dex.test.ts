@@ -29,4 +29,6 @@ describe("NoSlippageDex", () => {
     // Validate oracle value
     expect(stxPrice.toNumber()).to.eq(42 * 10 ** 8);
   });
+
+  it("Should deploy NoSlippageDex", async () => {});
 });
